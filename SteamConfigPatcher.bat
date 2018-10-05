@@ -61,7 +61,7 @@ goto:start
 :restartsteam
 echo Restarting Steam...
 echo.
-PSLIST steam >nul 2>&1
+TASKLIST | FIND /I "steam" >nul 2>&1
 IF ERRORLEVEL 0 ( start /b /w " " "%SteamPath%/Steam.exe" -shutdown )
 goto:LOOP
 
@@ -70,7 +70,7 @@ start /b " " "%SteamPath%/Steam.exe"
 goto:start
 
 :LOOP
-PSLIST steam >nul 2>&1
+TASKLIST | FIND /I "steam" >nul 2>&1
 IF ERRORLEVEL 1 (
   GOTO startsteam
 ) ELSE (
