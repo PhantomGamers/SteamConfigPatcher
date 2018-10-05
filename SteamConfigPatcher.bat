@@ -61,7 +61,19 @@ goto:start
 :restartsteam
 echo Restarting Steam...
 echo.
-start /b /w " " "%SteamPath%/Steam.exe" -shutdown
-ping -n 3 127.0.0.1 > nul
+PSLIST steam >nul 2>&1
+IF ERRORLEVEL 0 ( start /b /w " " "%SteamPath%/Steam.exe" -shutdown )
+goto:LOOP
+
+:startsteam
 start /b " " "%SteamPath%/Steam.exe"
 goto:start
+
+:LOOP
+PSLIST steam >nul 2>&1
+IF ERRORLEVEL 1 (
+  GOTO startsteam
+) ELSE (
+  TIMEOUT /T 3 >nul 2>&1
+  GOTO LOOP
+)
