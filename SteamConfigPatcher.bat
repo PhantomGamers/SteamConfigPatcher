@@ -47,13 +47,13 @@ echo.
 goto:start
 
 :eventnotificationsoff
-sfk replace -dir "%SteamPath%/userdata" -file sharedconfig.vdf -pat "/bNotifications_EventsAndAnnouncements\\\":true/bCategorizeInGameFriendsByGame\\\":false/" -yes -quiet
+sfk replace -dir "%SteamPath%/userdata" -file sharedconfig.vdf -pat "/bNotifications_EventsAndAnnouncements\\\":true/bNotifications_EventsAndAnnouncements\\\":false/" -yes -quiet
 echo Event and Announcement notifications turned off!
 echo.
 goto:start
 
 :eventnotificationson
-sfk replace -dir "%SteamPath%/userdata" -file sharedconfig.vdf -pat "/bNotifications_EventsAndAnnouncements\\\":false/bCategorizeInGameFriendsByGame\\\":true/" -yes -quiet
+sfk replace -dir "%SteamPath%/userdata" -file sharedconfig.vdf -pat "/bNotifications_EventsAndAnnouncements\\\":false/bNotifications_EventsAndAnnouncements\\\":true/" -yes -quiet
 echo Event and Announcement notifications turned on!
 echo.
 goto:start
